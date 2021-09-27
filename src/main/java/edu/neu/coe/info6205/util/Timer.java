@@ -1,5 +1,9 @@
 package edu.neu.coe.info6205.util;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -26,7 +30,7 @@ public class Timer {
             function.get();
             lap();
         }
-        pause();
+        pause(); //ticks + getClock()
         return meanLapTime();
     }
 
@@ -55,7 +59,24 @@ public class Timer {
     public <T, U> double repeat(int n, Supplier<T> supplier, Function<T, U> function, UnaryOperator<T> preFunction, Consumer<U> postFunction) {
         logger.trace("repeat: with " + n + " runs");
         // TO BE IMPLEMENTED: note that the timer is running when this method is called and should still be running when it returns.
-        return 0;
+
+        for (int i=0;i<n;i++) {
+            if(!Objects.isNull(preFunction)) {
+                pause();
+                preFunction.apply(supplier.get());
+                resume();
+            }
+
+            U output = function.apply(supplier.get());
+            if(!Objects.isNull(postFunction)) {
+                pause();
+                postFunction.accept(output);
+                resume();
+            }
+            lap();
+        }
+        pause();
+        return meanLapTime();
     }
 
     /**
@@ -77,7 +98,7 @@ public class Timer {
      */
     public double meanLapTime() {
         if (running) throw new TimerException();
-        return toMillisecs(ticks) / laps;
+        return ((millisecs()) / getLaps()) ;
     }
 
     /**
@@ -88,7 +109,11 @@ public class Timer {
      */
     public void pauseAndLap() {
         lap();
-        ticks += getClock();
+        long value = getClock();
+        //System.out.println("Pause ticks " + ticks + " getClocl: " + value + "result: " + (ticks+value));
+        //System.out.println("const ticks "+ (value - constant));
+
+        ticks += value;
         running = false;
     }
 
@@ -99,7 +124,10 @@ public class Timer {
      */
     public void resume() {
         if (running) throw new TimerException();
-        ticks -= getClock();
+        constant = getClock();
+        //System.out.println("Resume ticks " + ticks + " getClocl: " + constant + " result: " + (ticks-constant));
+        ticks -= constant;
+        //System.out.println("final ticks : " + ticks);
         running = true;
     }
 
@@ -147,7 +175,15 @@ public class Timer {
 
     private long ticks = 0L;
     private int laps = 0;
+    private long constant = 0L;
     private boolean running = false;
+    private final static long  jvm_diff;
+
+    static {
+        jvm_diff = System.currentTimeMillis()*1000_000-System.nanoTime();
+    }
+
+
 
     // NOTE: Used by unit tests
     private long getTicks() {
@@ -174,7 +210,8 @@ public class Timer {
      */
     private static long getClock() {
         // TO BE IMPLEMENTED
-        return 0;
+
+        return System.nanoTime();
     }
 
     /**
@@ -186,7 +223,14 @@ public class Timer {
      */
     private static double toMillisecs(long ticks) {
         // TO BE IMPLEMENTED
-        return 0;
+        return  ticks/1e6;
+        //return ticks;
+
+        //return Math.max(0L, Math.round(ticks / 1000_000));
+
+        //return TimeUnit.MILLISECONDS.convert(ticks, TimeUnit.NANOSECONDS);
+        //return TimeUnit.NANOSECONDS.toMillis(ticks);
+        //return ticks;
     }
 
     final static LazyLogger logger = new LazyLogger(Timer.class);
