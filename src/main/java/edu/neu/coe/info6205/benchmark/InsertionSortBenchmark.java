@@ -57,21 +57,21 @@ public class InsertionSortBenchmark {
        InsertionSortBenchmark insertionSortBenchmark = new InsertionSortBenchmark();
        int numberOfTrials = 12;
        int startNumberOfIntegers = 4;
-//       System.out.println("RANDOM ARRAY");
-//       System.out.println("Number Of Integer     " + "Mean Time");
-//       for (int index = 0; index < numberOfTrials; index++) {
-//           insertionSortBenchmark.testInsertionSortForRandomArray(startNumberOfIntegers);
-//           startNumberOfIntegers = startNumberOfIntegers * 2;
-//
-//       }
+       System.out.println("RANDOM ARRAY");
+       System.out.println("Number Of Integer     " + "Mean Time");
+       for (int index = 0; index < numberOfTrials; index++) {
+           insertionSortBenchmark.testInsertionSortForRandomArray(startNumberOfIntegers);
+           startNumberOfIntegers = startNumberOfIntegers * 2;
 
-//       System.out.println("REVERSED ARRAY");
-//       System.out.println("Number Of Integer     |" + "Mean Time");
-//       for (int index = 0; index < numberOfTrials; index++) {
-//           insertionSortBenchmark.testInsertionSortForReversedArray(startNumberOfIntegers);
-//           startNumberOfIntegers = startNumberOfIntegers * 2;
-//
-//       }
+       }
+
+       System.out.println("REVERSED ARRAY");
+       System.out.println("Number Of Integer     |" + "Mean Time");
+       for (int index = 0; index < numberOfTrials; index++) {
+           insertionSortBenchmark.testInsertionSortForReversedArray(startNumberOfIntegers);
+           startNumberOfIntegers = startNumberOfIntegers * 2;
+
+       }
 
        System.out.println("SORTED ARRAY");
        System.out.println("Number Of Integer     |" + "Mean Time");
