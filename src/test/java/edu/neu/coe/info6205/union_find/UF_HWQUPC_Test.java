@@ -156,7 +156,7 @@ public class UF_HWQUPC_Test {
         assertEquals(0, h.find(3));
         assertEquals(0, h.find(4));
         assertEquals(0, h.find(5));
-        final PrivateMethodTester tester = new PrivateMethodTester(h);
+        final PrivateMethodTester tester =  new PrivateMethodTester(h);
         assertEquals(0, tester.invokePrivate("getParent", 4));
         assertEquals(0, tester.invokePrivate("getParent", 5));
     }
