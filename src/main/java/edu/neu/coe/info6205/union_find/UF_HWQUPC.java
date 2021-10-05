@@ -20,9 +20,10 @@ public class UF_HWQUPC implements UF {
      * @param q the integer representing the other site
      */
     public void connect(int p, int q) {
-        if (!isConnected(p, q)) union(p, q);
+        if (!isConnected(p, q))  { union(p, q); numberOfConnections++; }
     }
 
+    private int numberOfConnections;
     /**
      * Initializes an empty union–find data structure with {@code n} sites
      * {@code 0} through {@code n-1}. Each site is initially in its own
@@ -34,6 +35,8 @@ public class UF_HWQUPC implements UF {
      */
     public UF_HWQUPC(int n, boolean pathCompression) {
         count = n;
+        numberOfConnections = 0;
+
         parent = new int[n];
         height = new int[n];
         for (int i = 0; i < n; i++) {
@@ -69,6 +72,10 @@ public class UF_HWQUPC implements UF {
      */
     public int components() {
         return count;
+    }
+
+    public int getNumberOfConnections() {
+        return numberOfConnections;
     }
 
     /**
