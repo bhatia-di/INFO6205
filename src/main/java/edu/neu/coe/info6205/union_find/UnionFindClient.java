@@ -5,7 +5,7 @@ public class UnionFindClient {
 
     public static void main(String[] args) {
         int numberOfSites = 2;
-        for (int index = 0; index < 10; index++) {
+        for (int index = 0; index < 20; index++) {
             UF_HWQUPC uf_hwqupc = new UF_HWQUPC(numberOfSites);
             int numberOfConnections = countOfConnections(uf_hwqupc, numberOfSites);
             System.out.printf("Number of sites %d || Number of connections %d \n", numberOfSites, numberOfConnections);
