@@ -18,10 +18,11 @@ public class Main {
 
     public static void main(String[] args) {
         processArgs(args);
-        System.out.println("Degree of parallelism: " + ParSort.threadPool.getParallelism());
+        int degreeOfParallelism = ParSort.threadPool.getParallelism();
+        int arrayLength = 2000000;
+        System.out.println("Degree of parallelism: " + degreeOfParallelism);
         Random random = new Random();
-        int[] array = new int[2000000];
-        System.out.println("Input array Size : " + array.length);
+        int[] array = new int[arrayLength];
 
         ArrayList<Long> timeList = new ArrayList<>();
         for (int j = 50; j < 100; j++) {
@@ -42,7 +43,7 @@ public class Main {
 
         }
         try {
-            FileOutputStream fis = new FileOutputStream("./src/result.csv");
+            FileOutputStream fis = new FileOutputStream("./src/result_thread_count_" + degreeOfParallelism + "_arraySize_" + arrayLength + ".csv");
             OutputStreamWriter isr = new OutputStreamWriter(fis);
             BufferedWriter bw = new BufferedWriter(isr);
             int j = 0;
