@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         processArgs(args);
         int degreeOfParallelism = ParSort.threadPool.getParallelism();
-        int arrayLength = 2000000;
+        int arrayLength = 3000000;
         System.out.println("Degree of parallelism: " + degreeOfParallelism);
         Random random = new Random();
         int[] array = new int[arrayLength];
@@ -48,7 +48,7 @@ public class Main {
             BufferedWriter bw = new BufferedWriter(isr);
             int j = 0;
             for (long i : timeList) {
-                String content = (double) 10000 * (j + 1) / 2000000 + "," + (double) i / 10 + "\n";
+                String content = (double) 10000 * (j + 1) / arrayLength + "," + (double) i / 10 + "\n";
                 j++;
                 bw.write(content);
                 bw.flush();
