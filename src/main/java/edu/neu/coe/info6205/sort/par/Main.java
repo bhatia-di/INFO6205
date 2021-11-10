@@ -18,9 +18,11 @@ public class Main {
 
     public static void main(String[] args) {
         processArgs(args);
-        System.out.println("Degree of parallelism: " + ForkJoinPool.getCommonPoolParallelism());
+        System.out.println("Degree of parallelism: " + ParSort.threadPool.getParallelism());
         Random random = new Random();
         int[] array = new int[2000000];
+        System.out.println("Input array Size : " + array.length);
+
         ArrayList<Long> timeList = new ArrayList<>();
         for (int j = 50; j < 100; j++) {
             ParSort.cutoff = 10000 * (j + 1);
