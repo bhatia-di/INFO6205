@@ -1,4 +1,5 @@
 import pandas as pd
+
 try:
     import numpy
 except ImportError:
