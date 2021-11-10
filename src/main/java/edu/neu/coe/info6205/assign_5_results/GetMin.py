@@ -1,11 +1,10 @@
 import pandas as pd
+import glob
 
-df=pd.read_csv('./result_thread_count_2_arraySize_2000000.csv', names = ['x', 'y'])
-print(df.columns)
-
-#FINDING MAX AND MIN
-p=df['y'].max()
-q=df['y'].min()
+path = './' # use your path
+all_files = glob.glob(path + "/*.csv")
 
 
-print(q)
+for filename in all_files:
+    df = pd.read_csv(filename, index_col=None, header=0, names=['x', 'y'])
+    print("File Name: " , filename , " -- ",  df[df['y'] == df['y'].min()])
