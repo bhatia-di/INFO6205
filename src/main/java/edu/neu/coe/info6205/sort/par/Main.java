@@ -43,7 +43,7 @@ public class Main {
 
         }
         try {
-            FileOutputStream fis = new FileOutputStream("./src/result_thread_count_" + degreeOfParallelism + "_arraySize_" + arrayLength + ".csv");
+            FileOutputStream fis = new FileOutputStream("./src/main/java/edu/neu/coe/info6205/assign_5_results/result_thread_count_" + degreeOfParallelism + "_arraySize_" + arrayLength + ".csv");
             OutputStreamWriter isr = new OutputStreamWriter(fis);
             BufferedWriter bw = new BufferedWriter(isr);
             int j = 0;
