@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         processArgs(args);
         int degreeOfParallelism = ParSort.threadPool.getParallelism();
-        int arrayLength = 3000000;
+        int arrayLength = 5000000;
         System.out.println("Degree of parallelism: " + degreeOfParallelism);
         Random random = new Random();
         int[] array = new int[arrayLength];
