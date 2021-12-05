@@ -2,7 +2,7 @@ package edu.neu.coe.info6205.sort.counting;
 
 public class LSDStringSort {
 
-    private final int ASCII_RANGE = 256;
+    private final int ASCII_RANGE = 478;
 
     /**
      * findMaxLength method returns maximum length of all available strings in an array

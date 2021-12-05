@@ -49,7 +49,7 @@ public class MSDStringSort {
         else return -1;
     }
 
-    private static final int radix = 256;
+    private static final int radix = 478;
     private static final int cutoff = 15;
     private static String[] aux;       // auxiliary array for distribution
 }
