@@ -19,11 +19,13 @@ public class BenchmarkAndSortChineseText {
     private static Ini ini = new Ini();
     private static Config config = new Config(ini);
     private static edu.neu.coe.huskySort.util.Config con = new edu.neu.coe.huskySort.util.Config(ini);
-    public static Integer cnt = 0;
+    private static String basePath = "D:\\PSA\\PSA Final Project\\Sorted Chinese Text\\";
+    private static String fileInputPath  = "shuffledChinese.txt";
+    private static String fileOutputPath  = "sortedChinese.txt";
 
     public static void sortChineseArrayWithMSDSort() throws FileNotFoundException {
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
-        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(pinyinToChineseMap);
+        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(basePath + fileInputPath, pinyinToChineseMap);
         MSDStringSort.sort(pinyin);
         String[] output = ChineseStringUtil.convertPinyinToChinese(pinyin, pinyinToChineseMap);
     }
@@ -32,14 +34,14 @@ public class BenchmarkAndSortChineseText {
     public static void sortChineseArrayWithLSDSort() throws FileNotFoundException {
         LSDStringSort lsd = new LSDStringSort();
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
-        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(pinyinToChineseMap);
+        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(basePath + fileInputPath,pinyinToChineseMap);
         lsd.sort(pinyin);
         String[] output = ChineseStringUtil.convertPinyinToChinese(pinyin, pinyinToChineseMap);
     }
 
     public static void sortChineseArrayWithDualPivotSort() throws FileNotFoundException {
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
-        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(pinyinToChineseMap);
+        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(basePath + fileInputPath, pinyinToChineseMap);
         Helper help = new BaseHelper<>("Dual-Pivot quicksort", pinyin.length, new Config(ini));
         QuickSort_DualPivot<String> quickSort = new QuickSort_DualPivot<>(help);
         quickSort.sort(pinyin,true);
@@ -49,7 +51,7 @@ public class BenchmarkAndSortChineseText {
 
     public static void sortChineseArrayWithHuskySort() throws FileNotFoundException {
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
-        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(pinyinToChineseMap);
+        String[] pinyin = ChineseStringUtil.convertChineseToPinyin(basePath + fileInputPath, pinyinToChineseMap);
         PureHuskySort<String> sorter = new PureHuskySort<>(HuskyCoderFactory.unicodeCoder, false, false);
         sorter.sort(pinyin);
         String[] output = ChineseStringUtil.convertPinyinToChinese(pinyin, pinyinToChineseMap);
@@ -69,7 +71,6 @@ public class BenchmarkAndSortChineseText {
         double MSDSortRunTime = MSDbenchmark.run(null, 1);
         System.out.println("Run time for MSDRadixsort  :  " + MSDSortRunTime);
 
-        cnt=1;
         Benchmark_Timer LSDbenchmark = new Benchmark_Timer("LSDsort", b -> {
             try {
                 sortChineseArrayWithLSDSort();
@@ -80,7 +81,6 @@ public class BenchmarkAndSortChineseText {
         double LSDSortRunTime = LSDbenchmark.run(null, 1);
         System.out.println("Run time for LSDRadixsort  :  " + LSDSortRunTime);
 
-        cnt=2;
         Benchmark_Timer QuickSortDualPivot = new Benchmark_Timer("QuickSortDualPivot", b -> {
             try {
                 sortChineseArrayWithDualPivotSort();
@@ -91,7 +91,6 @@ public class BenchmarkAndSortChineseText {
         double QSDPRunTime = QuickSortDualPivot.run(null, 1);
         System.out.println("Run time for QuickSortDualPivot  :  " + QSDPRunTime);
 
-        cnt=3;
         Benchmark_Timer PureHuskySort = new Benchmark_Timer("PureHuskySort", b -> {
             try {
                 sortChineseArrayWithHuskySort();

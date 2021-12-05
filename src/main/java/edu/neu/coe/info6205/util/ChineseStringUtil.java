@@ -9,13 +9,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+
 public class ChineseStringUtil {
 
 
-    public static String[] convertChineseToPinyin( HashMap<String, String> pinyinToChineseMap) throws FileNotFoundException {
+    public static String[] convertChineseToPinyin(String filePath,  HashMap<String, String> pinyinToChineseMap) throws FileNotFoundException {
         List<String> output = new ArrayList<String>();
         try {
-            File shuffledChinese = new File("C:/Users/varun/Desktop/shuffledChinese/shuffledChinese4M.txt");
+            File shuffledChinese = new File(filePath);
             BufferedReader shuffledChineseReader = new BufferedReader(new FileReader(shuffledChinese));
             HanyuPinyinOutputFormat format = new HanyuPinyinOutputFormat();
             format.setCaseType(HanyuPinyinCaseType.LOWERCASE);
@@ -67,8 +69,8 @@ public class ChineseStringUtil {
         return chineseArray;
     }
 
-    public static void writeResultFile(String[] chineseArray) throws IOException {
-        FileWriter sortedChineseWriter = new FileWriter("C:/Users/varun/Desktop/sortedChinese.txt");
+    public static void writeResultFile(String outputPath, String[] chineseArray) throws IOException {
+        FileWriter sortedChineseWriter = new FileWriter(outputPath);
         for (String elem: chineseArray) {
             sortedChineseWriter.write(elem);
             sortedChineseWriter.write(System.getProperty( "line.separator" ));
