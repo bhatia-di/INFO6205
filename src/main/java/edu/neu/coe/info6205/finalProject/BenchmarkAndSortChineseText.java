@@ -10,29 +10,16 @@ import edu.neu.coe.info6205.sort.linearithmic.QuickSort_DualPivot;
 import edu.neu.coe.info6205.util.Benchmark_Timer;
 import edu.neu.coe.info6205.util.ChineseStringUtil;
 import edu.neu.coe.info6205.util.Config;
-import net.sourceforge.pinyin4j.PinyinHelper;
-import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
-import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import org.ini4j.Ini;
-
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class BenchmarkAndSortChineseText {
-    static HashMap<String, String>  both= new HashMap<String, String>();
 
     private static Ini ini = new Ini();
     private static Config config = new Config(ini);
     private static edu.neu.coe.huskySort.util.Config con = new edu.neu.coe.huskySort.util.Config(ini);
     public static Integer cnt = 0;
-    public static String names = "";
 
     public static void sortChineseArrayWithMSDSort() throws FileNotFoundException {
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
@@ -117,7 +104,4 @@ public class BenchmarkAndSortChineseText {
     }
 
 
-    public HashMap<String, String> getChineseMap() {
-        return both;
-    }
 }
