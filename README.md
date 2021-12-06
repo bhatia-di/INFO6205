@@ -1,10 +1,9 @@
-INFO6205-project-sorting-Chinese-string
+#INFO6205-project-sorting-Chinese-string
 
-Benchmark & Sort Chinese Characters Class File: [BenchmarkAndSortChineseText.java](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/main/java/edu/neu/coe/info6205/finalProject/BenchmarkAndSortChineseText.java)
-Comment out the sorting algorithms here if you don't want to run it
-Modify the BENCHMARK_RUNS variable's value to change the number of runs
-Experiment results are stored in experiment_result.xlsx
-Sorted chinese names are stored in output folder
+1. Benchmark & Sort Chinese Characters Class File: [BenchmarkAndSortChineseText.java](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/main/java/edu/neu/coe/info6205/finalProject/BenchmarkAndSortChineseText.java)
+2. Inorder to run for different chinese text files, we update the value basePath & inputPath on line 22, 23 in [BenchmarkAndSortChineseText.java](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/main/java/edu/neu/coe/info6205/finalProject/BenchmarkAndSortChineseText.java)
+3. Experiment results are stored in [Sorting_results.xslx]([BenchmarkAndSortChineseText.java](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/main/java/edu/neu/coe/info6205/finalProject/sortComparison.xlsx))
+4. Sorted chinese names are stored in output folder [sortedChinese.txt]()
 6 different sorting methods are included in this repo
 LSD radix sort
 MSD radix sort

@@ -21,7 +21,7 @@ public class BenchmarkAndSortChineseText {
     private static edu.neu.coe.huskySort.util.Config con = new edu.neu.coe.huskySort.util.Config(ini);
     private static String basePath = "D:\\PSA\\PSA Final Project\\Sorted Chinese Text\\";
     private static String fileInputPath  = "shuffledChinese4M.txt";
-    private static String fileOutputPath  = "sortedChinese.txt";
+    private static String fileOutputPath  = "edu/neu/coe/info6205/finalProject/sortedChinese.txt";
 
     public static void updateFilePaths (String inputPath, String outputPath) {
         fileInputPath  = inputPath;
