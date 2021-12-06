@@ -14,7 +14,7 @@ import java.util.List;
 public class ChineseStringUtil {
 
 
-    public static String[] convertChineseToPinyin(String filePath,  HashMap<String, String> pinyinToChineseMap) throws FileNotFoundException {
+    public static String[] convertChineseToPinyin(String filePath,  HashMap<String, String> pinyinToChineseMap)  {
         List<String> output = new ArrayList<String>();
         try {
             File shuffledChinese = new File(filePath);

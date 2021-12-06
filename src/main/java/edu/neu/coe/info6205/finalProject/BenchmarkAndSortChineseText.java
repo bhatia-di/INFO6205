@@ -23,6 +23,15 @@ public class BenchmarkAndSortChineseText {
     private static String fileInputPath  = "shuffledChinese.txt";
     private static String fileOutputPath  = "sortedChinese.txt";
 
+    public static void updateFilePaths (String inputPath, String outputPath) {
+        fileInputPath  = inputPath;
+        fileOutputPath  = outputPath;
+
+    }
+
+
+
+
     public static void sortChineseArrayWithMSDSort() throws FileNotFoundException {
         HashMap<String, String>  pinyinToChineseMap= new HashMap<String, String>();
         String[] pinyin = ChineseStringUtil.convertChineseToPinyin(basePath + fileInputPath, pinyinToChineseMap);
