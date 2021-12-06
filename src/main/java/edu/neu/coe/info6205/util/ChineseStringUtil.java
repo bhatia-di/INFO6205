@@ -57,7 +57,6 @@ public class ChineseStringUtil {
             return pinyinOutputArray;
         } catch (FileNotFoundException exception) {
             System.out.println("File Not found error");
-            exception.printStackTrace();
         } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
             badHanyuPinyinOutputFormatCombination.printStackTrace();
         } catch (IOException e) {

@@ -20,7 +20,7 @@ public class BenchmarkAndSortChineseText {
     private static Config config = new Config(ini);
     private static edu.neu.coe.huskySort.util.Config con = new edu.neu.coe.huskySort.util.Config(ini);
     private static String basePath = "D:\\PSA\\PSA Final Project\\Sorted Chinese Text\\";
-    private static String fileInputPath  = "shuffledChinese.txt";
+    private static String fileInputPath  = "shuffledChinese4M.txt";
     private static String fileOutputPath  = "sortedChinese.txt";
 
     public static void updateFilePaths (String inputPath, String outputPath) {
@@ -77,7 +77,7 @@ public class BenchmarkAndSortChineseText {
                 e.printStackTrace();
             }
         });
-        double MSDSortRunTime = MSDbenchmark.run(null, 1);
+        double MSDSortRunTime = MSDbenchmark.run(null, 3);
         System.out.println("Run time for MSDRadixsort  :  " + MSDSortRunTime);
 
         Benchmark_Timer LSDbenchmark = new Benchmark_Timer("LSDsort", b -> {
@@ -87,7 +87,7 @@ public class BenchmarkAndSortChineseText {
                 e.printStackTrace();
             }
         });
-        double LSDSortRunTime = LSDbenchmark.run(null, 1);
+        double LSDSortRunTime = LSDbenchmark.run(null, 3);
         System.out.println("Run time for LSDRadixsort  :  " + LSDSortRunTime);
 
         Benchmark_Timer QuickSortDualPivot = new Benchmark_Timer("QuickSortDualPivot", b -> {
@@ -97,7 +97,7 @@ public class BenchmarkAndSortChineseText {
                 e.printStackTrace();
             }
         });
-        double QSDPRunTime = QuickSortDualPivot.run(null, 1);
+        double QSDPRunTime = QuickSortDualPivot.run(null, 3);
         System.out.println("Run time for QuickSortDualPivot  :  " + QSDPRunTime);
 
         Benchmark_Timer PureHuskySort = new Benchmark_Timer("PureHuskySort", b -> {
