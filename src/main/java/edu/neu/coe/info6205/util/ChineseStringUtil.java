@@ -6,9 +6,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 
 public class ChineseStringUtil {
@@ -30,17 +28,25 @@ public class ChineseStringUtil {
                 for (int c=0; c<ca.length;c++){
                     String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(ca[c], format);
                     if(pinyinArray != null){
-                        pinyinOutput[c]=pinyinArray[0];
+                        pinyinArray = Arrays.stream(pinyinArray).filter(Objects::nonNull).toArray(String[]::new);
+                        if (pinyinArray[0] != null) {
+                            pinyinOutput[c]=pinyinArray[0];
+                        }
                     }
                 }
                 StringBuilder builder = new StringBuilder();
                 String finalOutput;
                 for (String pinyinOutput1 : pinyinOutput) {
-                    if (pinyinOutput1 == "null") {
-                        continue;
+                    if(pinyinOutput1 != null) {
+                        if (pinyinOutput1.contains("null")) {
+                            continue;
+                        }
+
+                        builder.append(pinyinOutput1);
+                        builder.append(" ");
                     }
-                    builder.append(pinyinOutput1);
-                    builder.append(" ");
+
+
                 }
                 finalOutput=builder.toString();
                 output.add(finalOutput);
@@ -51,6 +57,7 @@ public class ChineseStringUtil {
             return pinyinOutputArray;
         } catch (FileNotFoundException exception) {
             System.out.println("File Not found error");
+            exception.printStackTrace();
         } catch (BadHanyuPinyinOutputFormatCombination badHanyuPinyinOutputFormatCombination) {
             badHanyuPinyinOutputFormatCombination.printStackTrace();
         } catch (IOException e) {
