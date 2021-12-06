@@ -12,6 +12,8 @@
    5. Reference: https://arxiv.org/abs/2012.00866 by R.C. Hillyard
    
 6. Unit tests are located under [test folder](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/test/java/edu/neu/coe/info6205/util/ChineseStringUtilTest.java)
+7. Link to [report](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/reports/PSA%20Final%20Group%20Report.pdf)
+8. Link to [literature survey](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/reports/PSA%20Final%20Group%20Report.pdf) 
 
 **#Test case Explanation**
 1. testConvertChineseToPinyinWithValidChineseInput:  Asserts that tests output produces array of pinyin size of 4 with valid Input
