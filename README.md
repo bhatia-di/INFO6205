@@ -14,7 +14,6 @@
 6. Unit tests are located under [test folder](https://github.com/bhatia-di/INFO6205/blob/final-project-sort-chinese/src/test/java/edu/neu/coe/info6205/util/ChineseStringUtilTest.java)
 
 **#Test case Explanation**
-Explanation of the test cases:
 1. testConvertChineseToPinyinWithValidChineseInput:  Asserts that tests output produces array of pinyin size of 4 with valid Input
 2. testConvertChineseToPinyinWithNullInput: Asserts that tests that output produces array of pinyin size of 0 with empty text file
 3. testConvertChineseToPinyinWithNoInputFile: Asserts that it throws File Not found exception when incorrect file input to the system
